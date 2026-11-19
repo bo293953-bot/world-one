@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#100b2b">
+<title>WORLD//ONE</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;color:white;
+ font-family:Arial,sans-serif;
+ background:radial-gradient(ellipse at top left,#422078,#10102e 45%,#080d20);
+ min-height:100vh;
+}
+header{
+ padding:22px 18px;
+ display:flex;justify-content:space-between;
+ align-items:center;
+ background:#17102cbb;
+ border-bottom:1px solid #8d63c955;
+}
+.logo{
+ font-size:23px;font-weight:900;
+ background:linear-gradient(90deg,#50eaff,#bb75ff,#ff79c9);
+ -webkit-background-clip:text;color:transparent;
+}
+main{max-width:650px;margin:auto;padding:25px 18px}
+.tag{color:#66eaff;font-size:12px;letter-spacing:3px}
+h1{
+ font-size:39px;line-height:1.15;
+ background:linear-gradient(100deg,#fff,#68e8ff,#dc8aff,#ff9bc9);
+ -webkit-background-clip:text;color:transparent;
+}
+p{color:#c6c4e5;line-height:1.6}
+.card{
+ background:linear-gradient(140deg,#30205cdd,#151c45ee);
+ border:1px solid #a36cff77;
+ padding:21px;border-radius:20px;
+ margin-top:22px;
+ box-shadow:0 8px 30px #0005;
+}
+.challenge{
+ background:linear-gradient(120deg,#5226a6,#a12c9c,#d74b87);
+ border:0;
+}
+.challenge .tag{color:#ffe6ff}
+.mosaic{
+ display:grid;grid-template-columns:repeat(6,1fr);
+ gap:6px;margin-top:20px;
+}
+.tile{
+ aspect-ratio:1;border-radius:7px;
+ background:linear-gradient(135deg,#00d4ff,#6558ff);
+ box-shadow:0 0 10px #43bfff55;
+}
+.tile:nth-child(3n){
+ background:linear-gradient(135deg,#00efb0,#00a7d9);
+}
+.tile:nth-child(4n){
+ background:linear-gradient(135deg,#ffba55,#ff547e);
+}
+.tile:nth-child(5n){
+ background:linear-gradient(135deg,#d36cff,#7652ff);
+}
+button{
+ border:0;border-radius:13px;padding:15px;
+ background:linear-gradient(100deg,#4ceaff,#9b80ff,#fa76c8);
+ color:#140d30;font-weight:900;
+ width:100%;font-size:15px;
+ cursor:pointer;
+}
+button:active{transform:scale(.98)}
+textarea{
+ width:100%;margin:12px 0;padding:15px;
+ background:#100e30;color:white;
+ border:1px solid #a879ff;border-radius:12px;
+ font-size:15px;
+}
+textarea::placeholder{color:#9992c4}
+footer{text-align:center;padding:30px;color:#aaa4d1}
+.glow{
+ display:inline-block;padding:8px 12px;
+ border-radius:30px;background:#7438a855;
+ color:#e5caff;font-size:12px;
+}
+</style>
+</head>
+<body>
+<header>
+ <div class="logo">WORLD//ONE ✨</div>
+ <div>🌍</div>
+</header>
+<main>
+ <span class="glow">✦ A GLOBAL CREATION ✦</span>
+ <div class="tag" style="margin-top:25px">
+ ONE PLANET. ONE CREATION.
+ </div>
+ <h1>Millions of voices.<br>One colourful world.</h1>
+ <p>Every person has a story. Every contribution
+ adds colour to our shared creation.</p>
+
+ <section class="card challenge">
+  <div class="tag">🌟 TODAY'S GLOBAL CHALLENGE</div>
+  <h2>What does happiness mean to you?</h2>
+  <p>Give the world one word that makes you happy.</p>
+  <textarea id="answer" maxlength="40"
+   placeholder="Write your word here..."></textarea>
+  <button onclick="contribute()">✨ Add my contribution</button>
+  <p id="message" aria-live="polite"></p>
+ </section>
+
+ <section class="card">
+  <div class="tag">🌈 THE WORLD MOSAIC</div>
+  <h2>Look what we're creating!</h2>
+  <div class="mosaic" id="mosaic"></div>
+  <p id="count">0 contributions on this device</p>
+ </section>
+</main>
+<footer>
+ WORLD//ONE © 2026<br>
+ <span style="color:#d58cff">Different people. One beautiful creation. 💜</span>
+</footer>
+<script>
+let total=0;
+function contribute(){
+ const input=document.getElementById("answer");
+ const word=input.value.trim();
+ const message=document.getElementById("message");
+ if(!word){
+  message.textContent="Please enter your word first!";
+  return;
+ }
+ const tile=document.createElement("div");
+ tile.className="tile";
+ tile.title=word;
+ document.getElementById("mosaic").appendChild(tile);
+ total++;
+ document.getElementById("count").textContent=
+ total+" contributions on this device";
+ message.textContent="🌟 Your contribution has joined the creation!";
+ input.value="";
+}
+</script>
+</body>
+</html>
+  
