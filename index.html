@@ -156,6 +156,40 @@ const supabase = window.supabase.createClient(
 );
 
 console.log("WORLD//ONE connected to Supabase!");
-</script></body>
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+  const SUPABASE_URL = "YOUR_PROJECT_URL";
+  const SUPABASE_KEY = "YOUR_PUBLISHABLE_KEY";
+
+  const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
+  const connectionStatus = document.createElement("p");
+  connectionStatus.textContent = "Connecting to HustleHub database...";
+  connectionStatus.style.textAlign = "center";
+
+  document.querySelector("footer").before(connectionStatus);
+
+  async function testConnection() {
+    const { data, error } = await supabaseClient
+      .from("categories")
+      .select("name");
+
+    if (error) {
+      connectionStatus.textContent = "Database connection failed.";
+      console.error(error);
+    } else {
+      connectionStatus.textContent =
+        "HustleHub database connected! Categories: " + data.length;
+    }
+  }
+
+  testConnection();
+</script>
+</body>
 </html>
   
